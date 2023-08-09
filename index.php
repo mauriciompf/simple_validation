@@ -21,7 +21,8 @@
         }
 
         form {
-            padding: 1.75rem;
+            width: min(600px, 100%);
+            padding: 2rem;
             border: 1px solid black;
         }
 
@@ -45,12 +46,15 @@
             letter-spacing: .2rem;
         }
         
-        input {
+        input,
+        textarea {
             font: inherit;
+            width: 80%;
         }
 
         div {
             display: flex;
+            align-items: center;
             justify-content: flex-start;
             gap: .5rem;
         }
@@ -66,28 +70,28 @@
         </p>
         <div>
             <label for="name">Name:</label>
-            <input id="name" type="text" name="name">
+            <input id="name" type="text" name="name" value="<?php echo $name; ?>">
             <span class="as">*<?php echo $nameErr ?></span>
         </div>
         <div>
             <label for="email">E-mail:</label>
-            <input id="email" type="email" name="email">
+            <input id="email" type="text" name="email" value="<?php echo $email; ?>">
             <span class="as">* <?php echo $emailErr ?></span>
         </div>
         <div>
             <label for="url">Website:</label>
-            <input id="website" type="url" name="website">
+            <input id="website" type="url" name="website" value="<?php echo $website; ?>">
             <span class="as">* <?php echo $websiteErr ?></span>
         </div>
         <div>
             <label for="comment">Comment:</label>
-            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <textarea name="comment" id="comment" cols="30" rows="10"><?php echo $comment; ?></textarea>
         </div>
         <div>
             <span for="gender">Gender: </span>
-            <input type="radio" name="gender" value="female" id="female"><label for="female"> Female</label>
-            <input type="radio" name="gender" value="Male" id="male"><label for="male"> Male</label>
-            <input type="radio" name="gender" value="Other" id="other"><label for="other"> Other</label>
+            <input type="radio" name="gender" value="female" id="female" <?php if (isset($gender) && $gender == "female") echo "checked"; ?>><label for="female"> Female</label>
+            <input type="radio" name="gender" value="male" id="male" <?php if (isset($gender) && $gender == "male") echo "checked"; ?>><label for="male"> Male</label>
+            <input type="radio" name="gender" value="other" id="other" <?php if (isset($gender) && $gender == "other") echo "checked"; ?>><label for="other"> Other</label>
             <span class="as">* <?php echo $genderErr; ?></span>
         </div>
         <button type="submit" name="submit">
